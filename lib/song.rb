@@ -1,5 +1,6 @@
 class Song < ActiveRecord::Base
-belongs_to :playlist
+has_many :playlists
+has_many :users, :through => :playlists
 
   def self.find_by_moods(mood)
     self.all.select do |songs|

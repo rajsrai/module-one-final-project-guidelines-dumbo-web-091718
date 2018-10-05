@@ -1,6 +1,6 @@
 class Playlist < ActiveRecord::Base
  belongs_to :user
- has_many :song
+ belongs_to :song
 
  # def show_playlist
  #   user.all.select do |user|

@@ -1,13 +1,20 @@
 class User < ActiveRecord::Base
-has_many :playlist
-has_many :songs
+has_many :playlists
+has_many :songs, :through => :playlists
 
   # def self.song_by_mood(mood)
   #   Song.all.select do |songs|
   #     songs.mood == mood
   #   end
   # end
-
+  def songs
+    our_songs = Playlist.all.select do |playlist|
+      playlist.user == self
+    end
+    our_songs.map do |playlist|
+      playlist.song
+    end
+  end
 
 
 
